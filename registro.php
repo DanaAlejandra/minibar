@@ -119,21 +119,21 @@ $sqlp = "SELECT ps_numero, ps_id FROM piso WHERE ps_id = '$datop'";
         while($product = mysqli_fetch_array($item)){
         echo '<div class="form-row">
                <div class="form-group col-md-2">
-               <input class="form-control form-control-md" type="text" name="id['.$product['pd_id'].']" id="id['.$product['pd_id'].']" value="'.$product['pd_id'].'">
+               <input class="form-control form-control-md" type="text" name="id[]" id="id[]" value="'.$product['pd_id'].'">
                </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
-         <input class="form-control form-control-md" type="text" name="nombre['.$product['pd_id'].']" id="nombre['.$product['pd_id'].']" value="'.$product['pd_nombre'].'">
+         <input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'">
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-4">
-          <select  class="custom-select form-control"  name ="evaluacion['.$product['pd_id'].']">
-                 <option selected>Seleccione...</option>
-                 <option name="evaluacion" value="1">CR</option>
-                 <option name="evaluacion" value="2">R</option>
-                 <option name="evaluacion" value="3">SS</option>
+          <select  class="custom-select form-control"  name ="evaluacion[]">
+                 <option selected value="0">Seleccione...</option>
+                 <option  value="1">CR</option>
+                 <option  value="2">R</option>
+                 <option  value="3">SS</option>
                  </select>
         </div>'; 
  
