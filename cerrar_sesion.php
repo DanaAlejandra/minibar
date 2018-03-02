@@ -8,7 +8,7 @@ session_destroy();
 // else{ alert('Operacion Cancelada');
 // }</script>";
 
-echo '<script>window.location="login.php";</script>';
+echo '<script>window.location="index.php";</script>';
 
 // echo '<script>window.location="login.php";</script>';
  ?>

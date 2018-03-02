@@ -22,7 +22,7 @@ else
 
 {
    echo '<script>alert("Usuario o Contraseña Incorrecta.");</script>';
-   echo '<script>window.location="login.php";</script>';
+   echo '<script>window.location="index.php";</script>';
 } 
 
 mysqli_close($con);

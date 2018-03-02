@@ -9,13 +9,12 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
 //CONSULTA NUMERO DE PISOS
   if ($consulta = $con -> query($sql)) {
     $selection = mysqli_fetch_array($consulta); 
-    echo ' <ol class="breadcrumb">
+    echo '<ol class="breadcrumb">
       <li><a href="menu_principal.php">Inicio</a></li>     
-      <li class="active" href="menu_principal.php?piso='.$idp.'" >Piso '.$selection['ps_numero'].'</li> 
+      <li><a href="mostrar_piso.php?piso_id='.$idp.'" >Piso '.$selection['ps_numero'].'</a></li> 
       <li class="active">Habitacion '.$h_numero.'</li>
       </ol>'; 
   }
-
 
 ?>
 <div class="container">       
@@ -90,3 +89,4 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
     </div>
   </div>  <!--FIN PANEL DE PRODUCTOS-->
 
+<?php require_once 'footer.php'; ?>

@@ -19,13 +19,14 @@ include 'php/inicio.php';
   <link rel="stylesheet" href="assests/plugins/datatables/jquery.dataTables.min.css">
   <!-- file input -->
   <link rel="stylesheet" href="assests/plugins/fileinput/css/fileinput.min.css">
-  <!-- jquery -->
+<!-- jquery -->
   <script src="assests/jquery/jquery.min.js"></script>
   <!-- jquery ui -->  
   <link rel="stylesheet" href="assests/jquery-ui/jquery-ui.min.css">
   <script src="assests/jquery-ui/jquery-ui.min.js"></script>
   <!-- bootstrap js -->
   <script src="assests/bootstrap/js/bootstrap.min.js"></script>
+  
 
 <style type="text/css">
   .img{
@@ -88,6 +89,8 @@ $fecha = date ("j/n/Y");
   </nav>
 </header>
 <body>
+</div> <!-- container -->
+  <!-- file input -->
   
 </body>
 </html>
