@@ -32,4 +32,3 @@
 <!-- /row -->
 
 <script src="custom/js/report.js"></script>
-<?php require_once 'footer.php'; ?>
