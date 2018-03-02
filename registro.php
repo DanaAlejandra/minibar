@@ -75,7 +75,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
          } //FIN DEL WHILE
         
         if ($registro_f = $con ->  query($sql_ev)) {
-        echo '<label>Estado Frigobar</label><select  class="custom-select form-control"  name ="evaluacion"><option selected value="0">Seleccione...</option>'; 
+        echo '<label>Estado Frigobar</label><select  class="custom-select form-control"  name ="evaluacion"><option selected value="0">Seleccione.... </option>'; 
          while ( $evaluacion = mysqli_fetch_array($registro_f)) {
            echo '<label>Estado</label>
                  <option  value="'.$evaluacion['ev_id'].'">'.$evaluacion['ev_descripcion'].'</option>';

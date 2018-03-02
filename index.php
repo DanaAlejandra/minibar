@@ -31,8 +31,6 @@
                 <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" required autofocus>
                 <input type="password" id="pass" name="pass" class="form-control" placeholder="Clave" required>
                 <button id="go" class="btn btn-lg btn-primary btn-block btn-signin " type="submit">Login</button>
-                <button  class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Cancelar</button> 
-
             </form> <!-- /form -->
         </div> <!-- /card-container -->
     </div> <!-- /container -->
