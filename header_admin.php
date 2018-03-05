@@ -5,7 +5,7 @@ include 'php/inicio.php';
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SISTEMA MINIBAR</title>
+  <title>SISTEMA MINIBAR ADMINISTRADOR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- bootstrap -->
   <link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
@@ -71,9 +71,9 @@ $fecha = date ("j/n/Y");
 
       <ul class="nav navbar-nav navbar-right">        
 
-        <li id="navDashboard"><a href="menu_principal.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
+        <li id="navDashboard"><a href="menu_principal.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio </a></li>        
       
-        <li id="navReport"><a href="reporte.php"> <i class="glyphicon glyphicon-check"></i> Reportes </a></li>
+        <li id="navReport"><a href="reporte.php"><i class="glyphicon glyphicon-check"></i> Reportes </a></li>
 
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
@@ -92,5 +92,3 @@ $fecha = date ("j/n/Y");
 </div> <!-- container -->
   <!-- file input -->
   
-</body>
-</html>

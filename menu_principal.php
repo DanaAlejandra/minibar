@@ -9,22 +9,23 @@
       <span>Seleccione numero de piso</span>
       <br>
       <br>
-      <div class="form-row container">
-
       <div class="form-group">
-        <a class="btn btn-primary" href="mostrar_piso.php?piso_id=1">Piso 6</a>
-        <a class="btn btn-primary" href="mostrar_piso.php?piso_id=2">Piso 7</a>
-        <a class="btn btn-primary" href="mostrar_piso.php?piso_id=3">Piso 8</a>
-        <a class="btn btn-primary" href="mostrar_piso.php?piso_id=4">Piso 9</a>
-        <a class="btn btn-primary" href="mostrar_piso.php?piso_id=5">Piso 10</a>
-      </div>
 
-       <div class="form-group ">
-         <a class="btn btn-primary" href="mostrar_piso.php?piso_id=6">Piso 11</a>
-         <a class="btn btn-primary" href="mostrar_piso.php?piso_id=7">Piso 12</a>
-         <a class="btn btn-primary" href="mostrar_piso.php?piso_id=8">Piso 14</a>
-         <a class="btn btn-primary" href="mostrar_piso.php?piso_id=9">Piso 15</a>
-         <a class="btn btn-primary" href="mostrar_piso.php?piso_id=10">Piso 16</a>
+      <div class="form-row">
+        <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=1">
+        <i class="glyphicon glyphicon-th-list"> </i> Piso 6 </a>
+        <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=2"> <i class="glyphicon glyphicon-th-list"> </i> Piso 7</a>
+        <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=3"> <i class="glyphicon glyphicon-th-list"> </i> Piso 8</a>
+        <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=4"> <i class="glyphicon glyphicon-th-list"> </i> Piso 9</a>
+        <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=5"> <i class="glyphicon glyphicon-th-list"> </i> Piso 10</a>
+      </div>
+       <br>
+       <div class="form-row ">
+         <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=6"> <i class="glyphicon glyphicon-th-list"> </i> Piso 11</a>
+         <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=7"> <i class="glyphicon glyphicon-th-list"> </i> Piso 12</a>
+         <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=8"> <i class="glyphicon glyphicon-th-list"> </i> Piso 14</a>
+         <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=9"> <i class="glyphicon glyphicon-th-list"> </i> Piso 15</a>
+         <a class="btn btn-primary btn-lg" href="mostrar_piso.php?piso_id=10"> <i class="glyphicon glyphicon-th-list"> </i> Piso 16</a>
        </div>
        <br>
       </div>

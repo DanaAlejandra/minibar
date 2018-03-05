@@ -59,7 +59,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
 
         <div class="form-row">
           <div class="form-group col-md-6">
-         <input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'">
+         <input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'" disabled>
         </div>
 
         <div class="form-row">

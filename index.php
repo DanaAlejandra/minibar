@@ -28,7 +28,7 @@
              <img id="profile-img img" class="" src="img/logohotel.jpg"/>
             <p id="profile-name" class="profile-name-card"></p>
              <form class="form-signin" method="post" action="validar_login.php">          
-                <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" required autofocus>
+                <input type="text" id="user" name="user" class="form-control" placeholder=""  style="text-transform:uppercase;" required autofocus>
                 <input type="password" id="pass" name="pass" class="form-control" placeholder="Clave" required>
                 <button id="go" class="btn btn-lg btn-primary btn-block btn-signin " type="submit">Login</button>
             </form> <!-- /form -->
