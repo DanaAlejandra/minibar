@@ -10,6 +10,7 @@ echo 'Reporte día '.$date .'<br>';
 echo 'Encargado Minibar '.$_SESSION['u_nombre'] .'<br>';
 ?>
 <!--TABLA CONSUMO DE PRODUCTOS-->
+<br>
 <label>Consumo de productos por habitación : </label><br><br>
 <table border="1" cellspacing="0" cellpadding="0" style="width:100%;"><tr>
 			<th>Habitacion</th>

@@ -66,14 +66,14 @@ $fecha = date ("j/n/Y");
       <!-- <a class="navbar-brand" href="#">Brand</a> -->
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+ 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
 
       <ul class="nav navbar-nav navbar-right">        
 
-        <li id="navDashboard"><a href="menu_principal.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio </a></li>        
+        <li id="navDashboard"><a href="menuprincipal_admin.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio </a></li>        
       
-        <li id="navReport"><a href="reporte.php"><i class="glyphicon glyphicon-check"></i> Reportes </a></li>
+        <li id="navReport"><a href="reporte_admin.php"><i class="glyphicon glyphicon-check"></i> Reportes </a></li>
 
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>

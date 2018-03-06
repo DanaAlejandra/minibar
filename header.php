@@ -71,7 +71,7 @@ $fecha = date ("j/n/Y");
 
       <ul class="nav navbar-nav navbar-right">        
 
-        <li id="navDashboard"><a href="menu_principal.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
+        <li id="navDashboard"><a href="menuprincipal_user.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
       
         <li id="navReport"><a href="reporte.php"> <i class="glyphicon glyphicon-check"></i> Reportes </a></li>
 

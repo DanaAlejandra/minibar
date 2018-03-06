@@ -19,7 +19,7 @@ if( $fila_user > 0)
     $_SESSION['u_id'] = $re['u_id']; 
 	$_SESSION['u_nombre'] = $re['u_nombre']; 
 	$_SESSION['t_tipo'] = $re['t_tipo']; 
-	header("location:menu_principal.php");
+	header("location:menuprincipal_user.php");
 	exit(); 
 }
 elseif ($fila_admin > 0 ) {
@@ -27,7 +27,7 @@ elseif ($fila_admin > 0 ) {
     $_SESSION['u_id'] = $re['u_id']; 
 	$_SESSION['u_nombre'] = $re['u_nombre']; 
 	$_SESSION['t_tipo'] = $re['t_tipo']; 
-	header("location:menuprincipal_administrador.php");
+	header("location:menuprincipal_admin.php");
 	exit(); 
 }
 else

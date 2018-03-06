@@ -8,7 +8,7 @@ $fecha = date ("Y-m-d");
 $id_hab = $_SESSION['id_habitacion'];
 
 $id_p = $_POST['id']; 
-$nombre_p = $_POST['nombre']; 
+$nombre = $_POST['nombre']; 
 $estado_p = $_POST['estado'];
 $evaluacion_f = $_POST['evaluacion'];
 $i = 0; 
@@ -25,7 +25,7 @@ $i = 0;
            $mysql="INSERT INTO `stock`(`s_id`, `fk_estado`, `fk_producto`, `fk_registro`) VALUES ('','$estado_p[$i]','$id_p[$i]','$last_id')";
 
            if ($re = $con -> query($mysql)) {
-               echo 'Registro de producto '.$nombre_p[$i].' Exitoso<br>';
+               echo 'Registro de producto '.$nombre[$i].' Exitoso<br>';
              }             
            else {
                echo 'No hay consumo de productos<br>';

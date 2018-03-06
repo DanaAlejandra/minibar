@@ -10,38 +10,34 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
   if ($consulta = $con -> query($sql)) {
     $selection = mysqli_fetch_array($consulta); 
     echo '<ol class="breadcrumb">
-      <li><a href="menu_principal.php">Inicio</a></li>     
+      <li><a href="menuprincipal_user.php">Inicio</a></li>     
       <li><a href="mostrar_piso.php?piso_id='.$idp.'" >Piso '.$selection['ps_numero'].'</a></li> 
       <li class="active">Habitacion '.$h_numero.'</li>
       </ol>'; 
   }
-
 ?>
-<div class="container">       
+
+<div class="container container-fluider">       
 <!--INGRESO DE CONSUMO DE PRODUCTOS-->
   <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading"> Registro </div>
       <div class="panel-body">
-        <form name="form-product" id="form-product" method="POST" action="registro_final.php"> 
+    <form name="form-product" id="form-product" class="form-horizontal" method="POST" action="registro_final.php"> 
         <br>
       <div class="form-row">
-          <div class="form-group col-md-2">
+          <div class="col-md-2">
           <label> Id  </label> 
-        </div>
+          </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="col-md-6">
           <label> Nombre  </label> 
-        </div>
+          </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-4">
+          <div class=" col-md-4">
           <label> Estado  </label> 
           </div>
         </div>
-      <br>
-      <br>
 
       <?php  
       //MOSTRAR PRODUCTOS EXISTENTES
@@ -52,26 +48,25 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         $item = $con -> query($sql); 
         
         while($product = mysqli_fetch_array($item)){
-        echo '<div class="form-row">
-               <div class="form-group col-md-2">
+        echo '<div class="form-group">
+               <div class="col-md-2">
                <input class="form-control form-control-md" type="text" name="id[]" id="id[]" value="'.$product['pd_id'].'">
                </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="col-md-6">
          <input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'" disabled>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-4">
+         </div>
+          <div class="col-md-4">
           <select  class="custom-select form-control"  name ="estado[]">
                  <option selected value="0">Seleccione...</option>
                  <option  value="1">CR</option>
                  <option  value="2">R</option>
                  <option  value="3">SS</option>
                  </select>
+        </div>
         </div>'; 
          } //FIN DEL WHILE
+
         
         if ($registro_f = $con ->  query($sql_ev)) {
         echo '<label>Estado Frigobar</label><select  class="custom-select form-control"  name ="evaluacion"><option selected value="0">Seleccione.... </option>'; 
@@ -79,14 +74,13 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
            echo '<label>Estado</label>
                  <option  value="'.$evaluacion['ev_id'].'">'.$evaluacion['ev_descripcion'].'</option>';
          } //FIN DEL WHILE EVALUACION FRIGOBAR
-         echo '</select><br><br>';
+         echo '</select><br>';
         } //FIN DEL IF     
         ?>    
 
-        <input type="submit" class="btn btn-primary" name="guardar" id="guardar" value="Guardar">       
+        <input type="submit" class="btn btn-primary" name="guardar" id="guardar" value="Guardar">   
+
          </form>
       </div>
     </div>
   </div>  <!--FIN PANEL DE PRODUCTOS-->
-
-<?php require_once 'footer.php'; ?>
