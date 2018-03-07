@@ -1,5 +1,5 @@
 <?php
-include('header.php'); 
+include('php/header.php'); 
 $idp = $_GET['piso_id']; 
 $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp"; 
 //CONSULTA NUMERO DE PISOS

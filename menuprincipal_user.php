@@ -1,4 +1,4 @@
-<?php require_once 'header.php'; ?>
+<?php require_once 'php/header.php'; ?>
 <div class="container container-fluider">
   <div class="panel-group">
     <div class="panel panel-default">

@@ -2,15 +2,13 @@
 include('php/conexion.php');
 include('php/inicio.php');
 // Datos previos al registro 
-
 $id_user = $_SESSION['u_id']; 
 $fecha = date ("Y-m-d"); 
 $id_hab = $_SESSION['id_habitacion'];
 
 $id_p = $_POST['id']; 
-$nombre = $_POST['nombre']; 
 $estado_p = $_POST['estado'];
-$evaluacion_f = $_POST['evaluacion'];
+//$evaluacion_f = $_POST['evaluacion'];
 $i = 0; 
    
     $sql = "INSERT INTO `registro`(`r_id`, `r_fecha`, `fk_usuario`, `fk_habitacion`) VALUES ('','$fecha','$id_user', '$id_hab')";
@@ -23,38 +21,30 @@ $i = 0;
            if($estado_p[$i] > 0){
 
            $mysql="INSERT INTO `stock`(`s_id`, `fk_estado`, `fk_producto`, `fk_registro`) VALUES ('','$estado_p[$i]','$id_p[$i]','$last_id')";
-
-           if ($re = $con -> query($mysql)) {
-               echo 'Registro de producto '.$nombre[$i].' Exitoso<br>';
-             }             
+           $re = $con -> query($mysql); 
+              echo $mensaje='1'; 
+             } //FIN VALIDACION ESTADO PRODUCTOS            
            else {
-               echo 'No hay consumo de productos<br>';
+             echo $mensaje='0';
              }
-            }
-            else{
-                  echo 'No hay consumo que registar Habitacion<br>';
-            }//FIN VALIDACION PRODUCTOS
-            
-            $i++; 
-           }// CIERRE DEL WHILE RECORRE PRODUCTOS POR HABITACION
-           
+             $i++;
+            }// CIERRE DEL WHILE RECORRE PRODUCTOS POR HABITACION
+                       
+           /*
            if ($evaluacion_f > 1) {
             $mysql = "INSERT INTO  `frigobar`(`f_id`, `fk_evaluacion`, `fk_registro`)  VALUES ('', '$evaluacion_f', '$last_id')"; 
 
                        if ($nuevo =  $con -> query($mysql)) {
-                       echo 'Registo exitoso Frigobar'.$id_hab.' Habitacion estado'.$evaluacion_f.'<br>';
+                        echo $valid['successF']='1';
                        }
                        else{
-                        echo 'ERROR';
+                        echo  $valid['successF']='2';
                        }
           }
           else{
-            echo 'No hay cambios que registrar en Frigobar de la Habitacion<br>';
-          }
-        
-
-            
+           echo  $valid['successF']='0';
+          }*/          
           } //FIN REGISTRO
           
-mysqli_close($con); 
+echo $mensaje;         
 ?>

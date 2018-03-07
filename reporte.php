@@ -1,4 +1,4 @@
-<?php require_once 'header.php'; ?>
+<?php require_once 'php/header.php'; ?>
 
 <script>
  $.datepicker.regional['es'] = {

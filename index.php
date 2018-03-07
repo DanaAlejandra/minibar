@@ -10,7 +10,7 @@
     <!-- font awesome -->
     <link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="main.css"> 
+    <link rel="stylesheet" type="text/css" href="css/main.css"> 
 </head>
 
 <style type="text/css">
