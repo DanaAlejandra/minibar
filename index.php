@@ -14,26 +14,24 @@
 </head>
 
 <style type="text/css">
-
 .img {
   height: 120px; 
   width: 120px; 
   display: block;
 }
-
 </style>
 <body>
 <div class="container">
         <div class="card card-container">
              <img id="profile-img img" class="" src="img/logohotel.jpg"/>
             <p id="profile-name" class="profile-name-card"></p>
-             <form class="form-signin" method="post" action="validar_login.php">          
+            <div id="msg"></div>
+             <form id="form-login" class="form-signin" method="post" action="validar_login.php">          
                 <input type="text" id="user" name="user" class="form-control" placeholder="Usuario"  required autofocus>
                 <input type="password" id="pass" name="pass" class="form-control" placeholder="Clave" required>
-                <button id="go" class="btn btn-lg btn-primary btn-block btn-signin " type="submit">Login</button>
+                <button id="go" class="btn btn-lg btn-primary btn-block btn-signin " type="submit" >Login</button>
             </form> <!-- /form -->
         </div> <!-- /card-container -->
     </div> <!-- /container -->
 </body>
-
 </html>

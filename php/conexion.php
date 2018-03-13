@@ -1,7 +1,7 @@
 <?php
 	// Parametros a configurar para la conexion de la base de datos
 	$host = "localhost";    // sera el valor de nuestra BD
-	$basededatos = "minibar";    // sera el valor de nuestra BD
+	$basededatos = "bdminibar_final";    // sera el valor de nuestra BD
 	$usuariodb = "root";    // sera el valor de nuestra BD
 	$clavedb = "";    // sera el valor de nuestra BD
 

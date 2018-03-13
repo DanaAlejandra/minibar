@@ -6,13 +6,14 @@
  prevText: '< Ant',
  nextText: 'Sig >',
  currentText: 'Hoy',
+
  monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
  monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
  dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
  dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
  dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
  weekHeader: 'Sm',
- dateFormat: 'mm/dd/yy',
+ dateFormat: 'dd-mm-yy',
  firstDay: 1,
  isRTL: false,
  showMonthAfterYear: false,
@@ -33,11 +34,11 @@ $("#startDate").datepicker();
 			<!-- /panel-heading -->
 			<div class="panel-body">
 				
-				<form class="form-horizontal" action="generar.php" method="post" id="getOrderReportForm">
+				<form class="form-horizontal" action="generar.php" method="post"  id="getOrderReportForm">
 				  <div class="form-group">
 				    <label for="startDate" class="col-sm-2 control-label">Fecha a Buscar</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="startDate" name="startDate" placeholder="Fecha inicial" />
+				      <input type="datepicker" class="form-control" id="startDate" name="startDate" placeholder="Ingrese Fecha" />
 				    </div>
 				  </div>
 				  <div class="form-group">

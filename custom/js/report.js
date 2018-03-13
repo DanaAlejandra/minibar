@@ -1,15 +1,12 @@
 $(document).ready(function() {
 	// order date picker
 	$("#startDate").datepicker();
-	// order date picker
-	$("#endDate").datepicker();
 
 	$("#getOrderReportForm").unbind('submit').bind('submit', function() {
 		
 		var startDate = $("#startDate").val();
-		var endDate = $("#endDate").val();
 
-		if(startDate == "" || endDate == "") {
+		if(startDate == "") {
 			if(startDate == "") {
 				$("#startDate").closest('.form-group').addClass('has-error');
 				$("#startDate").after('<p class="text-danger">La fecha inicial es requerida</p>');
@@ -18,13 +15,6 @@ $(document).ready(function() {
 				$(".text-danger").remove();
 			}
 
-			if(endDate == "") {
-				$("#endDate").closest('.form-group').addClass('has-error');
-				$("#endDate").after('<p class="text-danger">La fecha final es requerida</p>');
-			} else {
-				$(".form-group").removeClass('has-error');
-				$(".text-danger").remove();
-			}
 		} else {
 			$(".form-group").removeClass('has-error');
 			$(".text-danger").remove();

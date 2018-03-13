@@ -16,7 +16,7 @@ include 'php/inicio.php';
   <link rel="stylesheet" href="assests/jquery-ui/jquery-ui.min.css">
   <script src="assests/jquery-ui/jquery-ui.min.js"></script>
   <script src="assests/bootstrap/js/bootstrap.min.js"></script>
-
+  <script type="text/javascript" src="script.js"></script>
 <style type="text/css">
   .img{
   margin: 0.8em; 
@@ -60,14 +60,13 @@ $fecha = date ("j/n/Y");
 
       <ul class="nav navbar-nav navbar-right">        
 
-        <li id="navDashboard"><a href="menuprincipal_user.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
+        <li id="navDashboard"><a href="menuprincipal.php"><i class="glyphicon glyphicon-list-alt"></i>  Inicio</a></li>        
       
         <li id="navReport"><a href="reporte.php"> <i class="glyphicon glyphicon-check"></i> Reportes </a></li>
 
         <li class="dropdown" id="navSetting">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
-          <ul class="dropdown-menu">            
-            <li id="topNavSetting"><a href=""> <i class="glyphicon glyphicon-wrench"></i> Configuración</a></li>            
+          <ul class="dropdown-menu">                        
             <li id="topNavLogout"><a href="cerrar_sesion.php"> <i class="glyphicon glyphicon-log-out"></i> Salir</a></li>            
           </ul>
         </li>        
