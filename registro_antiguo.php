@@ -27,7 +27,7 @@ include('php/header.php');
 // DATOS PARA EL MENU DINAMINO
 $idp = $_GET['piso_id']; 
 $h_numero = $_GET['habitacion_num']; 
-$_SESSION['id_habitacion'] = $_GET['habitacion_id']; 
+$id_Hab = $_GET['habitacion_id']; 
  
 $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp"; 
 //CONSULTA NUMERO DE PISOS
@@ -96,8 +96,8 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
           <thead>
             <tr> 
               <th hidden="true" >Id</th> 
-              <th >Producto</th>
-              <th >Estado</th>                        
+              <th > Producto </th>
+              <th > Estado </th>                       
             </tr>
           </thead>
           <tbody>
@@ -136,25 +136,30 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
       <div class="panel-heading"> Consumo Habitación  </div>
       <div class="panel-body">
       
-    <form name="FormViewRegistro" id="FormViewRegistro" class="form-horizontal" method="" action="">
+    <form name="FormEditRegistro" id="FormViewRegistro" class="form-horizontal" method="GET" action="">
 
      <table class="table" id="productTable">
           <thead>
             <tr>              
               <th>Producto</th>
-              <th>Estado</th>                        
+              <th>Estado</th>
+              <th>Opcion</th>                       
             </tr>
           </thead>
           <tbody>
+
+
         <?php 
         include 'php/conexion.php'; 
         $fecha = date ("Y-m-d");
         $numero = $_GET['habitacion_num'];
-        $sql = "SELECT r_id ,pd_nombre ,e_sigla, e_descripcion,  pd_id, h_numero, e_id FROM `habitaciones` JOIN `registro` ON fk_habitacion = h_id JOIN `stock` ON fk_registro=r_id JOIN `productos` ON fk_producto= pd_id JOIN `estado` ON fk_estado=e_id WHERE r_fecha='$fecha' AND h_numero='$numero'"; 
+        $sql = "SELECT r_id ,pd_nombre ,e_sigla, e_descripcion,  pd_id, h_numero, e_id, s_id FROM `habitaciones` JOIN `registro` ON fk_habitacion = h_id JOIN `stock` ON fk_registro=r_id JOIN `productos` ON fk_producto= pd_id JOIN `estado` ON fk_estado=e_id WHERE r_fecha='$fecha' AND h_numero='$numero'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr><td><input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'" disabled></td>
-          <td><input class="form-control form-control-md" type="text" name="estado[]" id="estado[]" value="'.$product['e_descripcion'].'" disabled></td></tr> ';
+          <td><input class="form-control form-control-md" type="text" name="estado[]" id="estado[]" value="'.$product['e_descripcion'].'" disabled></td>
+          <td><a class="btn btn-primary" href="eliminar_stock.php?piso_id='.$idp.'&habitacion_num='.$h_numero.'&habitacion_id='.$id_Hab.'&stock_id='.$product['s_id'].'"><i class="glyphicon glyphicon-remove"></i></a></td>
+          </tr> ';
         }
         
         echo'</tbody></table><br>'; 

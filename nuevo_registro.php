@@ -5,12 +5,12 @@
 include('php/conexion.php');
 include('php/inicio.php');
 // Datos previos al registro 
-
+$id_hab = $_GET['habitacion_id']; 
 $idPs=$_GET['piso_id'];
 $numHab=$_GET['habitacion_num'];  
 $id_user = $_SESSION['u_id']; 
 $fecha = date ("Y-m-d"); 
-$id_hab = $_GET['habitacion_id']; 
+
 
 $idPr=$_POST['idNew'];
 $estadoPr = $_POST['estadoNew'];

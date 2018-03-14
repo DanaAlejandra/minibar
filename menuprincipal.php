@@ -20,7 +20,6 @@
      <a class="btn  btn-default  btn-lg" href="mostrar_piso.php?piso_id=4"> <i class="glyphicon glyphicon-menu-hamburger"> </i> Piso 9</a>
      <a class="btn  btn-lg" href="mostrar_piso.php?piso_id=5"> <i class="glyphicon glyphicon-menu-hamburger"> </i> Piso 10</a>
      <a class="btn  btn-lg" href="mostrar_piso.php?piso_id=6"><i class="glyphicon glyphicon-menu-hamburger"> </i> Piso 11 </a>
-  
   </div>
 
   <div class="box">
