@@ -2,6 +2,22 @@
 <html>
 <head>
   <title></title>
+
+<style>
+.contenedor_tabla{
+  padding: 20px; 
+  display: inline-table;
+  width: 50%; 
+  }
+
+.contenedor_tabla_otros{
+  padding: 20px; 
+  display: inline-table;
+  width: 50%; 
+}
+
+</style>
+
 </head>
 <body>
 
@@ -25,7 +41,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
   }
 ?>
 
-<div class="container">
+<div class="container container-fluider">
  <!--PANEL DE HABITACIONES-->
 <div class="panel-group">
     <div class="panel panel-default">
@@ -46,10 +62,11 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         echo'</select><br>'; 
      ?>
 
-     <table class="table" id="productTable">
+<div class="contenedor_tabla">
+  <table class="table" id="productTable">
           <thead>
             <tr> 
-              <th >Id</th> 
+              <th hidden="true">Id</th> 
               <th >Producto</th>
               <th >Estado</th>                        
             </tr>
@@ -57,11 +74,11 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
           <tbody>
         <?php 
         include 'php/conexion.php'; 
-        $sql = "SELECT pd_id, pd_nombre FROM `productos`"; 
+        $sql = "SELECT pd_id, pd_nombre FROM `productos` WHERE pd_categoria='Bebidas'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr>
-            <td><input class="form-control form-control-md" type="text" name="idNew[]" id="idNew[]" value="'.$product['pd_id'].'" ></td>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idNew[]" id="idNew[]" value="'.$product['pd_id'].'" ></td>
             <td><input class="form-control form-control-md" type="text" name="nombreNew[]" id="nombreNew[]" value="'.$product['pd_nombre'].'" disabled></td>
             <td><select  class="custom-select form-control"  name ="estadoNew[]">
                  <option selected value="0">Selecione.... </option>
@@ -72,6 +89,36 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         }
         echo'</tbody></table>'; 
         ?>   
+</div>
+
+<div class="contenedor_tabla_otros pull pull-right">
+  <table class="table" id="productTable">
+          <thead>
+            <tr> 
+              <th hidden="true" >Id</th> 
+              <th >Producto</th>
+              <th >Estado</th>                        
+            </tr>
+          </thead>
+          <tbody>
+        <?php 
+        include 'php/conexion.php'; 
+        $sql = "SELECT pd_id, pd_nombre FROM `productos` WHERE pd_categoria='Tragos' OR pd_categoria='Dulces'"; 
+        $result = $con -> query($sql); 
+        while($product = mysqli_fetch_array($result)){
+        echo '<tr>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idNew[]" id="idNew[]" value="'.$product['pd_id'].'" ></td>
+            <td><input class="form-control form-control-md" type="text" name="nombreNew[]" id="nombreNew[]" value="'.$product['pd_nombre'].'" disabled></td>
+            <td><select  class="custom-select form-control"  name ="estadoNew[]">
+                 <option selected value="0">Selecione.... </option>
+                 <option  value="1">CR</option>
+                 <option  value="2">R</option>
+                 <option  value="3">SS</option>
+          </select></td></tr>';
+        }
+        echo'</tbody></table>'; 
+        ?>   
+</div>
 
         <div class="div-action pull pull-right" style="padding-bottom:20px;">
           <button class="btn btn-default " id="editRegistroBtn"> <i class="glyphicon glyphicon-ok"></i> Agregar </button>

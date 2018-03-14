@@ -1,0 +1,28 @@
+.btn{
+	height: 60px; 
+	width: 25%;
+	padding: 20px; 
+	font-size: 1.2em;
+	color: #01579B;
+	background: #ffffff; 
+	text-align: center; 
+	margin: 0 0 25px; 
+	margin-right: 20px;
+	font-variant: small-caps;
+	border: 2px solid #BDBDBD;  
+   
+}
+
+.box{
+	width: 100%; 
+	text-align: center;
+}
+
+.img{
+	font-size: 24px;
+	color: #2962FF;
+	font-weight: normal;
+    font-style: normal;
+	display: inline-block;
+	align-items: center;
+}
