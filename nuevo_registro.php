@@ -9,8 +9,8 @@ $id_hab = $_GET['habitacion_id'];
 $idPs=$_GET['piso_id'];
 $numHab=$_GET['habitacion_num'];  
 $id_user = $_SESSION['u_id']; 
-//$fecha = date ("Y-m-d"); 
-$fecha = '2018-03-02'; 
+$fecha = date ("Y-m-d"); 
+
 
 $idPr=$_POST['idNew'];
 $estadoPr = $_POST['estadoNew'];
@@ -75,8 +75,7 @@ $i = 0;
      
           } //CIERRE REGISTRO
   
-
-       echo '<script>alert("Registro Exitoso, Total Productos Agregados ' .$contador.' / frigobar '.$mensaje.'/ Inventario '.$resp.'");</script>';
+       //echo 'Registro Exitoso, Total Productos Agregados ' .$contador.' / frigobar '.$mensaje.'/ Inventario '.$resp.'<br>';
        header("location:registro_antiguo.php?habitacion_id=$id_hab&piso_id=$idPs&habitacion_num=$numHab");
 
 mysqli_close($con); 

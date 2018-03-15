@@ -152,9 +152,9 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
 
         <?php 
         include 'php/conexion.php'; 
-        //$fecha = date ("Y-m-d");
+        $fecha = date ("Y-m-d");
         $numero = $_GET['habitacion_num'];
-  $sql = "SELECT r_id ,pd_nombre ,e_sigla, e_descripcion,  pd_id, h_numero, e_id, s_id FROM `habitaciones` JOIN `registro` ON fk_habitacion = h_id JOIN `stock` ON fk_registro=r_id JOIN `productos` ON fk_producto= pd_id JOIN `estado` ON fk_estado=e_id WHERE r_fecha='2018-03-02' AND h_numero='$numero'"; 
+  $sql = "SELECT r_id ,pd_nombre ,e_sigla, e_descripcion,  pd_id, h_numero, e_id, s_id FROM `habitaciones` JOIN `registro` ON fk_habitacion = h_id JOIN `stock` ON fk_registro=r_id JOIN `productos` ON fk_producto= pd_id JOIN `estado` ON fk_estado=e_id WHERE r_fecha='$fecha' AND h_numero='$numero'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr><td><input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'" disabled></td>

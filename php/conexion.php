@@ -8,7 +8,7 @@
 	//error_reporting(0); //No me muestra errores
 
 	$con = new mysqli($host,$usuariodb,$clavedb, $basededatos);
-
+	mysqli_set_charset($con,"utf8");
 	if ($con-> connect_errno) {
 	    echo "Nuestro sitio experimenta fallos....";
 	    exit();
