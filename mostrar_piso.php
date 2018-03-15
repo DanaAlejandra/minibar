@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="css/style_menu.css">
 <?php
 include('php/header.php'); 
 $idp = $_GET['piso_id']; 
@@ -12,10 +11,9 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
       <li class="active">Habitaciones</li>
       </ol>'; 
   }
-
- 
 ?>
 
+<link rel="stylesheet" type="text/css" href="css/style_menu.css">
 <div class="container  container-fluider">
   <div class="panel-group">
     <div class="panel panel-default">
@@ -34,7 +32,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
     
           while ($valores = mysqli_fetch_array($consulta)) {
            
-            echo '<a class="btn btn-lg" href="registro_antiguo.php?habitacion_id='.$valores['h_id'].'&piso_id='.$valores['fk_piso'].'&habitacion_num='.$valores['h_numero'].'">'.$valores['h_numero'].'</a>';   
+            echo '<a class="btn" href="registro_antiguo.php?habitacion_id='.$valores['h_id'].'&piso_id='.$valores['fk_piso'].'&habitacion_num='.$valores['h_numero'].'">'.$valores['h_numero'].'</a>';   
           } 
       ?> 
       </div>

@@ -18,7 +18,7 @@ $startDate = $_POST['startDate'];
 
 
 echo 'Reporte día '.$startDate .'<br>'; 
-echo 'Encargado Minibar '.$_SESSION['u_nombre'] .'<br>';
+echo 'Encargado Minibar <br>';
 ?>
 
 <!--TABLA CONSUMO DE PRODUCTOS-->
