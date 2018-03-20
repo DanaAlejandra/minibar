@@ -45,6 +45,28 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
 
 <div class="container container-fluider">
  <!--PANEL DE HABITACIONES-->
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <?php  
+    include 'php/conexion.php'; 
+    $idRegistro = $_GET['id_registro']; 
+    $sql= "SELECT `r_id`, `r_fecha`, `r_indicacion` FROM `registro` WHERE r_id='$idRegistro'"; 
+    $indicacion = $con->query($sql);
+    $result=mysqli_fetch_array($indicacion); 
+    if($result['r_indicacion'] != null){
+     echo 'Observación: <br>';
+     echo $result['r_indicacion'];
+    }
+    else{
+      echo "no hay observaciones";
+    }
+    ?>
+  </div>
+  
+</div>
+
+
 <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading"> Consumo  Ingresado :</div>
@@ -102,7 +124,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         $idHabitacion = $_GET['habitacion_id'];
         $fecha=date("Y-m-d");
         $idRegistro=$_GET['id_registro']; 
-        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`, `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND  pd_categoria='Dulces' OR  pd_categoria='Tragos'"; 
+        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`, `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND  pd_categoria <> 'Bebidas'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr>
@@ -119,7 +141,9 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         echo'</tbody></table>'; 
         ?>   
 </div>
-
+<br>
+<br>
+<br>
         <div class="div-action pull pull-right" style="padding-bottom:20px;">
           <button class="btn btn-default " id="editRegistroBtn"> <i class="glyphicon glyphicon-ok"></i> Modificar</button>
         </div> 

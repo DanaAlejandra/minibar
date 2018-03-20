@@ -53,9 +53,8 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
            }                 
       ?> 
       </div>
-
-
-    
+      
+        
       </form>
       </div>
     </div>

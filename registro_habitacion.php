@@ -121,9 +121,15 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
         ?>   
 </div>
 
+  <div>
+     <label>Indicaciones : </label>
+     <textarea class="form-control" rows="3" id="indicacionNew" name="indicacionNew"></textarea>
+  </div>
+  <br>
         <div class="div-action pull pull-right" style="padding-bottom:20px;">
           <button class="btn btn-default " id="editRegistroBtn"> <i class="glyphicon glyphicon-ok"></i> Agregar </button>
         </div> 
+
          </form>
         </div><!--FIN PANEL DE PRODUCTOS-->      
       </div>

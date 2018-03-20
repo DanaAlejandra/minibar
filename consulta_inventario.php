@@ -64,7 +64,7 @@ include 'php/header.php';
           <tbody>
         <?php 
         include 'php/conexion.php'; 
-        $sql = "SELECT `in_fk_producto`, `pd_nombre`, COUNT(h_id) as Total FROM `inventario`JOIN `productos` ON in_fk_producto=pd_id JOIN `habitaciones` ON in_fk_habitacion=h_id JOIN `piso` ON fk_piso=ps_id WHERE in_fk_habitacion=h_id AND fk_total='1' AND in_fk_producto=pd_id AND pd_categoria='Tragos' OR pd_categoria='Dulces' GROUP BY pd_nombre ORDER BY in_fk_producto ASC"; 
+        $sql = "SELECT `in_fk_producto`, `pd_nombre`, COUNT(h_id) as Total FROM `inventario`JOIN `productos` ON in_fk_producto=pd_id JOIN `habitaciones` ON in_fk_habitacion=h_id JOIN `piso` ON fk_piso=ps_id WHERE in_fk_habitacion=h_id AND fk_total='1' AND in_fk_producto=pd_id AND pd_categoria <> 'Bebidas'  GROUP BY pd_nombre ORDER BY in_fk_producto ASC"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr>

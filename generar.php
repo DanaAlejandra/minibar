@@ -80,6 +80,33 @@ include 'php/conexion.php';
 </table>
 
 
+<br>
+<label>Indicaciones por Habitaciones : </label><br><br>
+<table  border="1" cellspacing="0" cellpadding="0" style="width:100%;"><tr>
+			<th>Habitacion</th>
+			<th>Indicación</th>			
+		</tr>
+
+<?php
+include 'php/conexion.php';
+
+	$fecha = $_POST['startDate'];
+	//$date = DateTime::createFromFormat('m/d/Y',$startDate);
+	$date =date("Y-m-d",strtotime($fecha));
+	
+        $query = "SELECT `r_id`,  `r_indicacion`, h_numero FROM `registro` JOIN `habitaciones` ON fk_habitacion=h_id WHERE r_indicacion IS NOT Null AND r_fecha='$date' ORDER BY h_numero ASC";
+        $consulta = $con -> query($query); 
+
+		while ($result = mysqli_fetch_array($consulta)) {
+			echo '<tr>
+				<td><center>'.$result['h_numero'].'</center></td>
+				<td><center>'.$result['r_indicacion'].'</center></td>
+			    </tr>';	
+		}	
+		 //FIN DEL IF PRINCIPAL 
+?>
+</table>
+
 
 
 </body>
