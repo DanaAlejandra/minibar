@@ -66,7 +66,7 @@ include 'php/conexion.php';
 	//$date = DateTime::createFromFormat('m/d/Y',$startDate);
 	$date =date("Y-m-d",strtotime($fecha));
 	
-        $query = "SELECT r_id, r_fecha, h_numero, ev_descripcion FROM `frigobar` JOIN `registro` ON fk_registro= r_id JOIN `evaluacion` ON fk_evaluacion=ev_id JOIN `habitaciones` ON fk_habitacion=h_id WHERE r_fecha='$date' ORDER BY h_numero ASC";
+        $query = "SELECT r_id, r_fecha, h_numero, ev_descripcion FROM `frigobar` JOIN `registro` ON f_fk_registro= r_id JOIN `evaluacion` ON fk_evaluacion=ev_id JOIN `habitaciones` ON fk_habitacion=h_id WHERE r_fecha='$date' ORDER BY h_numero ASC";
         $consulta = $con -> query($query); 
 
 		while ($result = mysqli_fetch_array($consulta)) {
