@@ -47,6 +47,7 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
  <!--PANEL DE HABITACIONES-->
 
 <div class="panel panel-default">
+  <div class="panel-heading">  Habitación <?php echo $h_numero;?> </div>
   <div class="panel-body">
     <?php  
     include 'php/conexion.php'; 
@@ -56,26 +57,45 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
     $result=mysqli_fetch_array($indicacion); 
     if($result['r_indicacion'] != null){
      echo 'Observación: <br>';
-     echo $result['r_indicacion'];
+     echo '      '.$result['r_indicacion'].'.<br>';
     }
     else{
-      echo "no hay observaciones";
+      echo "no hay observaciones<br>";
     }
-    ?>
+
+    $query="SELECT `f_id`, `fk_evaluacion`, `ev_descripcion`, `f_fk_registro` FROM `frigobar` JOIN `evaluacion` ON fk_evaluacion=ev_id WHERE f_fk_registro='$idRegistro'"; 
+    $resp=$con->query($query);
+    $evaluacion=mysqli_fetch_array($resp);
+    if($evaluacion['ev_descripcion'] != null){
+    echo 'Estado frigobar : '.$evaluacion['ev_descripcion'].'.<br>'; 
+    }
+    else
+    {
+       echo 'Frigobar no presenta cambios';
+    }  
+    ?>    
   </div>
-  
 </div>
 
 
 <div class="panel-group">
     <div class="panel panel-default">
-      <div class="panel-heading"> Consumo  Ingresado :</div>
+      <div class="panel-heading"> Modificar Registro Habitacion <?php echo $h_numero; ?> :</div>
       <div class="panel-body">
 
     <form name="FormNewRegistro" id="FormNewRegistro" class="form-horizontal" method="post" action="modificarRegistro.php?piso_id=<?php $idPiso=$_GET['piso_id']; echo $idPiso;?>&habitacion_num=<?php $numHab=$_GET['habitacion_num']; echo $numHab;?>&habitacion_id=<?php $idHab=$_GET['habitacion_id']; echo $idHab;?>&id_registro=<?php echo $idRegistro;?>">
-    
-<div class="contenedor_tabla">
-  <table class="table" id="productTable">
+
+      <?php 
+        include 'php/conexion.php'; 
+        $fecha=date("Y-m-d");
+        $idHabitacion = $_GET['habitacion_id'];
+        $idRegistro=$_GET['id_registro']; 
+        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro'"; 
+        $result = $con -> query($sql); 
+        $total= mysqli_num_rows($result); 
+
+     if($total > 0){
+      echo '<div class="contenedor_tabla"><table class="table" id="productTable">
           <thead>
             <tr>
               <th hidden="true">Registro</th>
@@ -84,13 +104,9 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
               <th >Estado</th>                        
             </tr>
           </thead>
-          <tbody>
-        <?php 
-        include 'php/conexion.php'; 
-        $fecha=date("Y-m-d");
-        $idHabitacion = $_GET['habitacion_id'];
-        $idRegistro=$_GET['id_registro']; 
-        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND pd_categoria='Bebidas'"; 
+          <tbody>';
+      
+       $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND pd_categoria='Bebidas'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr>
@@ -105,31 +121,25 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
           </select></td></tr>';
         }
         echo'</tbody></table>'; 
-        ?>   
-</div>
-
-<div class="contenedor_tabla_otros pull pull-right">
-  <table class="table" id="productTable">
+        
+        echo '</div><div class="contenedor_tabla_otros pull pull-right">
+          <table class="table" id="productTable">
           <thead>
-            <tr> 
-              <th hidden="true">Registro</th>            
-              <th hidden="true" >Id</th> 
-              <th > Producto </th>
-              <th > Estado </th>                       
+            <tr>
+              <th hidden="true">Registro</th>
+              <th hidden="true">Id</th> 
+              <th >Producto</th>
+              <th >Estado</th>                        
             </tr>
           </thead>
-          <tbody>
-        <?php 
-        include 'php/conexion.php';
-        $idHabitacion = $_GET['habitacion_id'];
-        $fecha=date("Y-m-d");
-        $idRegistro=$_GET['id_registro']; 
-        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`, `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND  pd_categoria <> 'Bebidas'"; 
+          <tbody>';
+      
+        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND pd_categoria <> 'Bebidas'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
         echo '<tr>
-            <td hidden="false"><input class="form-control form-control-md"  type="text" name="idStockEdit[]" id="idStockEdit[]" value="'.$product['s_id'].'" ></td>
-             <td hidden="true"><input class="form-control form-control-md"  type="text" name="idEdit[]" id="idEdit[]" value="'.$product['pd_id'].'"></td>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idStockEdit[]" id="idStockEdit[]" value="'.$product['s_id'].'"></td>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idEdit[]" id="idEdit[]" value="'.$product['pd_id'].'"></td>
             <td><input class="form-control form-control-md" type="text" name="nombreEdit[]" id="nombreEdit[]" value="'.$product['pd_nombre'].'" disabled></td>
             <td><select  class="custom-select form-control"  name ="estadoEdit[]">
                  <option selected value="'.$product['e_id'].'">'.$product['e_sigla'].'</option>
@@ -138,14 +148,24 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
                  <option  value="3">SS</option>
           </select></td></tr>';
         }
-        echo'</tbody></table>'; 
-        ?>   
-</div>
+        echo'</tbody></table></div>'; 
+     }
+     else
+     {
+      echo '<div class="panel panel-default"><div class="panel-body">No existen productos ingresados en la habitación '.$h_numero.'<br></div></div>';
+     }
+  
+    ?>   
+      
 <br>
-<br>
-<br>
-        <div class="div-action pull pull-right" style="padding-bottom:20px;">
-          <button class="btn btn-default " id="editRegistroBtn"> <i class="glyphicon glyphicon-ok"></i> Modificar</button>
+        <div class="div-action pull pull-right col-md-3" style="padding-bottom:20px;">
+          <div class="pull-left">
+              <a class="btn btn-default" href="eliminarRegistro.php?piso_id=<?php $idPiso=$_GET['piso_id']; echo $idPiso;?>&habitacion_num=<?php $numHab=$_GET['habitacion_num']; echo $numHab;?>&habitacion_id=<?php $idHab=$_GET['habitacion_id']; echo $idHab;?>" id="editRegistroBtn"><i class="glyphicon glyphicon-ok"></i> Eliminar </a>
+          </div>
+          <div class="pull-right">
+              <button class="btn btn-default " id="editRegistroBtn"> <i class="glyphicon glyphicon-ok"></i> Modificar</button>
+          </div>
+        
         </div> 
          </form>
         </div><!--FIN PANEL DE PRODUCTOS-->      
@@ -157,44 +177,78 @@ $sql = "SELECT ps_id, ps_numero FROM piso WHERE ps_id=$idp";
  <!--PANEL DE HABITACIONES-->
 <div class="panel-group">
     <div class="panel panel-default">
-      <div class="panel-heading"> Consumo Habitación  </div>
+      <div class="panel-heading"> Registro diario Habitación <?php echo $id_Hab;  ?>  </div>
       <div class="panel-body">
       
     <form name="FormEditRegistro" id="FormViewRegistro" class="form-horizontal" method="GET" action="">
 
-     <table class="table" id="productTable">
+<?php 
+        include 'php/conexion.php'; 
+        $fecha=date("Y-m-d");
+        $idHabitacion = $_GET['habitacion_id'];
+        $idRegistro=$_GET['id_registro']; 
+        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro'"; 
+        $result = $con -> query($sql); 
+        $total= mysqli_num_rows($result); 
+      
+if($total > 0){
+      echo '<div class="contenedor_tabla"><table class="table" id="productTable">
           <thead>
             <tr>
-              <th hidden="true">Id</th>              
-              <th>Producto</th>
-              <th>Estado</th>                   
+              <th hidden="true">Registro</th>
+              <th hidden="true">Id</th> 
+              <th >Producto</th>
+              <th >Estado</th>                        
             </tr>
           </thead>
-          <tbody>
-
-
-        <?php 
-        include 'php/conexion.php'; 
-        $fecha = date ("Y-m-d");
-        $numero = $_GET['habitacion_num'];
-  $sql = "SELECT s_id, r_id ,pd_nombre ,e_sigla, e_descripcion,  pd_id, h_numero, e_id, s_id FROM `habitaciones` JOIN `registro` ON fk_habitacion = h_id JOIN `stock` ON fk_registro=r_id JOIN `productos` ON fk_producto= pd_id JOIN `estado` ON fk_estado=e_id WHERE r_fecha='$fecha' AND h_numero='$numero'"; 
+          <tbody>';
+      
+       $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND pd_categoria='Bebidas'"; 
         $result = $con -> query($sql); 
         while($product = mysqli_fetch_array($result)){
-        echo '<tr><td hidden="true" ><input class="form-control form-control-md" type="text" name="id[]" id="id[]" value="'.$product['s_id'].'"></td>
-          <td><input class="form-control form-control-md" type="text" name="nombre[]" id="nombre[]" value="'.$product['pd_nombre'].'" disabled></td>
-          <td><input class="form-control form-control-md" type="text" name="estado[]" id="estado[]" value="'.$product['e_descripcion'].'" disabled></td>
-          </tr> ';
+        echo '<tr>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idStockEdit[]" id="idStockEdit[]" value="'.$product['s_id'].'"></td>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idEdit[]" id="idEdit[]" value="'.$product['pd_id'].'"></td>
+            <td><input class="form-control form-control-md" type="text" name="nombreEdit[]" id="nombreEdit[]" value="'.$product['pd_nombre'].'" disabled></td>
+            <td><input class="form-control form-control-md" type="text" name="nombreEdit[]" id="nombreEdit[]" value="'.$product['e_descripcion'].'" disabled></td></tr>';
         }
+        echo'</tbody></table>'; 
         
-        echo'</tbody></table><br>'; 
-        ?>
+        echo '</div><div class="contenedor_tabla_otros pull pull-right">
+          <table class="table" id="productTable">
+          <thead>
+            <tr>
+              <th hidden="true">Registro</th>
+              <th hidden="true">Id</th> 
+              <th >Producto</th>
+              <th >Estado</th>                        
+            </tr>
+          </thead>
+          <tbody>';
+      
+        $sql = "SELECT `s_id`,`pd_id`, `pd_nombre`,`e_id`, `e_sigla`,  `e_descripcion`, `fk_registro` FROM `stock` JOIN `productos` ON fk_producto = pd_id JOIN `estado` ON fk_estado=e_id WHERE fk_registro='$idRegistro' AND pd_categoria <> 'Bebidas'"; 
+        $result = $con -> query($sql); 
+        while($product = mysqli_fetch_array($result)){
+        echo '<tr>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idStockEdit[]" id="idStockEdit[]" value="'.$product['s_id'].'"></td>
+            <td hidden="true"><input class="form-control form-control-md"  type="text" name="idEdit[]" id="idEdit[]" value="'.$product['pd_id'].'"></td>
+            <td><input class="form-control form-control-md" type="text" name="nombreEdit[]" id="nombreEdit[]" value="'.$product['pd_nombre'].'" disabled></td>
+            <td><input class="form-control form-control-md" type="text" name="nombreEdit[]" id="nombreEdit[]" value="'.$product['e_descripcion'].'" disabled></td></tr>';
+        }
+        echo'</tbody></table></div>'; 
+     }
+     else
+     {
+      echo '<div class="panel panel-default"><div class="panel-body">No existen productos ingresados en la habitación '.$h_numero.'<br></div></div>';
+     }
+  
+    ?>   
+<!--  
         <div class="col-md-3 pull pull-right">
-
         <div class="div-action pull pull-right">
           <a class="btn btn-default" href="eliminarRegistro.php?piso_id=<?php $idPiso=$_GET['piso_id']; echo $idPiso;?>&habitacion_num=<?php $numHab=$_GET['habitacion_num']; echo $numHab;?>&habitacion_id=<?php $idHab=$_GET['habitacion_id']; echo $idHab;?>" id="editRegistroBtn"><i class="glyphicon glyphicon-ok"></i> Eliminar </a>
         </div> 
-        </div>
-      
+        </div> -->    
          </form>
         </div><!--FIN PANEL DE PRODUCTOS-->      
       </div>
